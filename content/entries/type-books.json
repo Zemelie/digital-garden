@@ -1,0 +1,15 @@
+{
+  "title": "Type books",
+  "type": "branch",
+  "status": "budding",
+  "tags": [
+    "document"
+  ],
+  "planted": "2026-11-04",
+  "tended": "2026-11-04",
+  "body": "_Planted from the sketchbook. Tend me: add notes, files, links._",
+  "parent": "typography",
+  "related": [
+    "shared-reading-list"
+  ]
+}

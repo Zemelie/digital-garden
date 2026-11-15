@@ -1,0 +1,12 @@
+{
+  "title": "Subway journal entry",
+  "type": "branch",
+  "status": "budding",
+  "tags": [
+    "document"
+  ],
+  "planted": "2026-11-07",
+  "tended": "2026-11-14",
+  "body": "_Planted from the sketchbook. Tend me: add notes, files, links._",
+  "parent": "exploring-the-city"
+}

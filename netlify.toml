@@ -1,0 +1,9 @@
+[build]
+  command = "python3 build.py"
+  publish = "."
+
+# Entries are compiled into data/garden.json; always fetch the fresh copy.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -1,0 +1,16 @@
+{
+  "title": "Journaling",
+  "type": "branch",
+  "status": "budding",
+  "tags": [
+    "document",
+    "drawing"
+  ],
+  "planted": "2026-11-09",
+  "tended": "2026-11-09",
+  "body": "_Planted from the sketchbook. Tend me: add notes, files, links._",
+  "parent": "mindfulness",
+  "related": [
+    "subway-journal-entry"
+  ]
+}

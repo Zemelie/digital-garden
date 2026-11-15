@@ -1,0 +1,13 @@
+{
+  "title": "Handwriting sample",
+  "type": "branch",
+  "status": "fresh",
+  "tags": [
+    "drawing",
+    "photo"
+  ],
+  "planted": "2026-11-03",
+  "tended": "2026-11-03",
+  "body": "Scans of handwriting to turn into a typeface.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._",
+  "parent": "typography"
+}

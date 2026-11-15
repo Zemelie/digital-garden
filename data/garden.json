@@ -1,0 +1,313 @@
+{
+  "generated": "2026-11-15T03:02:15+00:00",
+  "entries": [
+    {
+      "id": "exploring-the-city",
+      "title": "Exploring the city",
+      "type": "node",
+      "parent": null,
+      "status": "fresh",
+      "tags": [],
+      "planted": "2026-11-06",
+      "tended": "2026-11-06",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "fontforge-guide",
+      "title": "FontForge guide",
+      "type": "branch",
+      "parent": "typography",
+      "status": "budding",
+      "tags": [
+        "document",
+        "link"
+      ],
+      "planted": "2026-11-02",
+      "tended": "2026-11-12",
+      "image": null,
+      "link": "https://fontforge.org/docs/",
+      "attachments": [],
+      "related": [],
+      "body": "Notes on working through FontForge.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "handwriting-sample",
+      "title": "Handwriting sample",
+      "type": "branch",
+      "parent": "typography",
+      "status": "fresh",
+      "tags": [
+        "drawing",
+        "photo"
+      ],
+      "planted": "2026-11-03",
+      "tended": "2026-11-03",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "Scans of handwriting to turn into a typeface.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "journaling",
+      "title": "Journaling",
+      "type": "branch",
+      "parent": "mindfulness",
+      "status": "budding",
+      "tags": [
+        "document",
+        "drawing"
+      ],
+      "planted": "2026-11-09",
+      "tended": "2026-11-09",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [
+        "subway-journal-entry"
+      ],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "mindfulness",
+      "title": "Mindfulness",
+      "type": "node",
+      "parent": null,
+      "status": "fresh",
+      "tags": [],
+      "planted": "2026-11-08",
+      "tended": "2026-11-08",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "no-internet-idea",
+      "title": "No-internet idea",
+      "type": "branch",
+      "parent": "mindfulness",
+      "status": "fresh",
+      "tags": [
+        "document"
+      ],
+      "planted": "2026-11-08",
+      "tended": "2026-11-08",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "otf-files",
+      "title": ".otf files",
+      "type": "branch",
+      "parent": "fontforge-guide",
+      "status": "fresh",
+      "tags": [
+        "document"
+      ],
+      "planted": "2026-11-05",
+      "tended": "2026-11-05",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "Exported font files live here as attachments.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "restaurants",
+      "title": "Restaurants",
+      "type": "branch",
+      "parent": "exploring-the-city",
+      "status": "fresh",
+      "tags": [
+        "link",
+        "photo"
+      ],
+      "planted": "2026-11-06",
+      "tended": "2026-11-06",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "shared-reading-list",
+      "title": "Shared reading list?",
+      "type": "node",
+      "parent": null,
+      "status": "fresh",
+      "tags": [],
+      "planted": "2026-11-11",
+      "tended": "2026-11-11",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "A maybe: a reading list other people can add to.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "subway-journal-entry",
+      "title": "Subway journal entry",
+      "type": "branch",
+      "parent": "exploring-the-city",
+      "status": "budding",
+      "tags": [
+        "document"
+      ],
+      "planted": "2026-11-07",
+      "tended": "2026-11-14",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "swash-and-serif",
+      "title": "Swash & serif",
+      "type": "branch",
+      "parent": "typography",
+      "status": "bloomed",
+      "tags": [
+        "link"
+      ],
+      "planted": "2026-11-02",
+      "tended": "2026-11-10",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "symposium-2026",
+      "title": "Symposium 2026",
+      "type": "node",
+      "parent": null,
+      "status": "budding",
+      "tags": [],
+      "planted": "2026-11-03",
+      "tended": "2026-11-03",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "symposium-tweets",
+      "title": "Tweets",
+      "type": "branch",
+      "parent": "symposium-2026",
+      "status": "fresh",
+      "tags": [
+        "link"
+      ],
+      "planted": "2026-11-05",
+      "tended": "2026-11-05",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "symposium-videos",
+      "title": "Videos",
+      "type": "branch",
+      "parent": "symposium-2026",
+      "status": "fresh",
+      "tags": [
+        "video"
+      ],
+      "planted": "2026-11-03",
+      "tended": "2026-11-03",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "symposium-website",
+      "title": "Website",
+      "type": "branch",
+      "parent": "symposium-2026",
+      "status": "budding",
+      "tags": [
+        "link"
+      ],
+      "planted": "2026-11-04",
+      "tended": "2026-11-04",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "toronto-font",
+      "title": "Toronto font (?)",
+      "type": "branch",
+      "parent": "exploring-the-city",
+      "status": "fresh",
+      "tags": [
+        "photo",
+        "drawing"
+      ],
+      "planted": "2026-11-09",
+      "tended": "2026-11-09",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [
+        "typography",
+        "handwriting-sample"
+      ],
+      "body": "Where the city and typography meet.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "type-books",
+      "title": "Type books",
+      "type": "branch",
+      "parent": "typography",
+      "status": "budding",
+      "tags": [
+        "document"
+      ],
+      "planted": "2026-11-04",
+      "tended": "2026-11-04",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [
+        "shared-reading-list"
+      ],
+      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "type": "node",
+      "parent": null,
+      "status": "budding",
+      "tags": [],
+      "planted": "2026-11-01",
+      "tended": "2026-11-12",
+      "image": null,
+      "link": null,
+      "attachments": [],
+      "related": [],
+      "body": "Idea / topic: **type**. Books, guides, files and samples gathered while learning to draw letters.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    }
+  ]
+}

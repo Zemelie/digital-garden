@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entry · Chloe-Amelie Garden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/garden.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+</head>
+<body class="page-entry">
+  <header class="site-header">
+    <a class="wordmark" href="./">Chloe-Amelie Garden</a>
+    <nav class="site-nav">
+      <a href="./#index-open">Index</a>
+      <a href="admin/">Plant a seed</a>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" id="crumbs" aria-label="Where you are"></nav>
+
+  <main class="entry-layout">
+    <article class="entry-main">
+      <p class="kind" id="kind"></p>
+      <h1 id="title">Loading…</h1>
+      <ul class="tags" id="tags"></ul>
+      <div class="media" id="media"></div>
+      <div class="prose" id="body"></div>
+      <section class="connections" id="connections"></section>
+    </article>
+
+    <aside class="entry-meta" aria-label="About this entry">
+      <dl>
+        <div><dt>Date planted</dt><dd id="planted"></dd></div>
+        <div><dt>Last tended</dt><dd id="tended"></dd></div>
+        <div><dt>Stage</dt><dd id="stage"></dd></div>
+      </dl>
+      <figure class="mini-map">
+        <svg id="miniMap" viewBox="-150 -150 300 330" role="img" aria-label="Map of this dandelion"></svg>
+        <figcaption id="miniCaption"></figcaption>
+      </figure>
+    </aside>
+
+    <aside class="comments" id="comments" aria-label="Comments">
+      <h2>Comments</h2>
+      <div id="commentsBody"></div>
+    </aside>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Move through the garden">
+    <a id="prevCluster" class="cluster">« cluster</a>
+    <a id="prevBranch">‹ branch</a>
+    <a id="home" href="./" class="home" aria-label="Home"><span aria-hidden="true">○</span> home</a>
+    <a id="nextBranch">branch ›</a>
+    <a id="nextCluster" class="cluster">cluster »</a>
+  </nav>
+
+  <script type="module" src="assets/js/entry.js"></script>
+</body>
+</html>
