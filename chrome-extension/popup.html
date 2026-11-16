@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plant a seed</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700&family=Chivo+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="bar">
+    <img src="icons/fish.svg" alt="" class="fish">
+    <h1>Plant a seed</h1>
+    <a href="options.html" target="_blank" class="settings" title="Settings">settings</a>
+  </header>
+
+  <div class="setup" id="setup" hidden>
+    <p>Connect the extension to your garden first: it needs a GitHub key so it can save entries.</p>
+    <a class="button" href="options.html" target="_blank">Open settings</a>
+  </div>
+
+  <form id="seed" autocomplete="off" hidden>
+    <label class="field">
+      <span>Title</span>
+      <input name="title" required>
+    </label>
+
+    <p class="link" id="link"></p>
+
+    <label class="field">
+      <span>Note</span>
+      <textarea name="body" rows="4" placeholder="Why this? What does it connect to?"></textarea>
+    </label>
+
+    <div class="pair">
+      <label class="field">
+        <span>Dandelion</span>
+        <select name="node"></select>
+      </label>
+      <label class="field">
+        <span>Branch</span>
+        <select name="branch"></select>
+      </label>
+    </div>
+
+    <fieldset class="field">
+      <legend>Stage</legend>
+      <div class="pills" id="stages"></div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Type</legend>
+      <div class="pills" id="types"></div>
+    </fieldset>
+
+    <label class="check"><input type="checkbox" name="screenshot"> Add a screenshot of the page</label>
+
+    <button type="submit" class="go" id="plant">Plant it!</button>
+    <p class="status" id="status" aria-live="polite"></p>
+  </form>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
