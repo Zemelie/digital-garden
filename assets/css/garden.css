@@ -28,6 +28,9 @@
   --sans: 'Chivo', system-ui, sans-serif;
   --mono: 'Chivo Mono', ui-monospace, monospace;
 
+  /* Height of the main viewer on the garden and entry pages (kept identical). */
+  --viewer-h: max(640px, calc(100vh - 210px));
+
   color-scheme: light;
 }
 
@@ -180,8 +183,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .stage {
   position: relative;
   width: 100%; /* never wider than the frame: min-height grows it taller, not wider */
-  aspect-ratio: 1444 / 798;
-  min-height: 520px;
+  height: var(--viewer-h);
   overflow: hidden;
   cursor: url('../img/watering-can.svg') 3 9, crosshair;
 }
@@ -293,7 +295,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .entry-stage {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 655px) minmax(0, 1fr);
-  height: max(640px, calc(100vh - 210px));
+  height: var(--viewer-h);
   background-color: #98cde6;
   background-repeat: no-repeat;
   background-position: center bottom, center;
@@ -391,7 +393,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
   .tended .label, .tended .ago { display: none; }
   .tended a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 34vw; }
   .tended .icon svg { width: 18px; height: 18px; }
-  .stage { aspect-ratio: auto; height: 640px; }
+  .stage { height: 640px; }
   .garden-title { top: 22px; width: calc(100% - 24px); }
   .garden-title h1 { margin-bottom: 16px; }
   .filters { gap: 8px; }

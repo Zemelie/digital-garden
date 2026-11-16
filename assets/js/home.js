@@ -28,6 +28,11 @@ async function init() {
   setupFilterForm($('filters'), G, { byTitle, onApply: (f) => { Object.assign(filters, f); applyFilters(); } });
   renderGarden();
   setupTooltip();
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { renderGarden(); applyFilters(); }, 150);
+  });
 
   // Links in from other pages: ?tag=photo or ?status=fresh pre-filters.
   const q = new URLSearchParams(location.search);
@@ -57,12 +62,16 @@ function renderGarden() {
   });
   const span = xs.length ? xs[xs.length - 1] : 0;
   const margin = 200 + (sizes[0] || 0);
-  const W = Math.max(1444, span + margin * 2);
+  const needed = Math.max(1444, span + margin * 2);
+  // Stretch the drawing to the frame's shape so the ground reaches both edges.
+  const frameAspect = stage.clientWidth / Math.max(1, stage.clientHeight);
+  const W = Math.max(needed, Math.round(H * frameAspect));
   const offset = (W - span) / 2;
   const plantX = nodes.map((n, i) => offset + xs[i]);
 
+  [...svg.childNodes].forEach((n) => n.nodeName !== 'desc' && n.remove());
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  stage.style.setProperty('--garden-w', `${Math.round(W * 0.53)}px`);
+  stage.style.setProperty('--garden-w', `${Math.round(needed * 0.53)}px`);
   const plants = svgEl('g', { class: 'plants' }, svg);
 
   nodes.forEach((node, i) => {
