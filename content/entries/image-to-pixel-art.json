@@ -1,0 +1,24 @@
+{
+  "title": "Image To Pixel Art",
+  "parent": "hi-jaryd",
+  "status": "fresh",
+  "tags": [
+    "link",
+    "photo"
+  ],
+  "planted": "2026-11-16T02:23:38.974Z",
+  "tended": "2026-11-16T02:23:38.974Z",
+  "files": [
+    {
+      "type": "link",
+      "url": "https://pixelartvillage.com/",
+      "label": "pixelartvillage.com"
+    },
+    {
+      "type": "photo",
+      "file": "/assets/uploads/image-to-pixel-art-screenshot.jpg",
+      "label": "Screenshot"
+    }
+  ],
+  "body": "Dabbling with taking some photos of landscapes and turning them into pixel art..."
+}
