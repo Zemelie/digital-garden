@@ -1,7 +1,7 @@
 import { SITE } from '../../site.config.js';
 import { loadGarden, formatDate, escapeHtml } from './data.js';
 import { renderDandelion, svgEl } from './dandelion.js';
-import { bandedGradient, timeOfDay } from './sky.js';
+import { bandedGradient, timeOfDay, PALETTES } from './sky.js';
 import { initChrome } from './chrome.js';
 
 const $ = (id) => document.getElementById(id);
@@ -46,18 +46,28 @@ async function init() {
 // The pixel landscape, with its sky cut out so the time-of-day sky shows through.
 function paintLandscape() {
   const stage = $('entryStage');
-  const sky = bandedGradient(timeOfDay(), 18);
+  const tod = timeOfDay();
+  const sky = bandedGradient(tod, 14);
+  // The landscape's horizon sits about halfway up, so fit the whole gradient
+  // into the top ~55%: the horizon colour (morning pink, evening peach) meets the land.
+  const stops = PALETTES[tod].stops;
+  stage.style.backgroundColor = stops[stops.length - 1][0];
+  stage.style.backgroundPosition = 'center bottom, center top';
+  stage.style.backgroundSize = 'cover, 100% 55%';
   stage.style.backgroundImage = sky;
   const img = new Image();
   img.onload = () => {
+    // The Figma export has a thin outline around its edge: trim it off.
+    const trim = 2;
     const c = document.createElement('canvas');
-    c.width = img.width;
-    c.height = img.height;
+    c.width = img.width - trim * 2;
+    c.height = img.height - trim * 2;
     const ctx = c.getContext('2d');
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(img, trim, trim, c.width, c.height, 0, 0, c.width, c.height);
     const data = ctx.getImageData(0, 0, c.width, c.height);
     const px = data.data;
-    const [sr, sg, sb] = [px[0], px[1], px[2]]; // top-left pixel is pure sky
+    const at = (c.width * 10 + 10) * 4; // a pixel well inside the sky
+    const [sr, sg, sb] = [px[at], px[at + 1], px[at + 2]];
     for (let i = 0; i < px.length; i += 4) {
       const r = px[i], g = px[i + 1], b = px[i + 2];
       if (Math.abs(r - sr) + Math.abs(g - sg) + Math.abs(b - sb) < 18) {

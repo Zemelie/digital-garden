@@ -43,15 +43,11 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
 
+      # Custom two-step picker (admin/garden-picker.js): dandelion first, then an optional branch.
       - label: Grows from
         name: parent
-        widget: relation
-        collection: entries
-        value_field: "{{slug}}"
-        search_fields: [title]
-        display_fields: [title]
+        widget: garden-parent
         required: false
-        hint: "Empty = a new dandelion. Otherwise, the node or branch this grows from."
 
       - label: Type
         name: tags
