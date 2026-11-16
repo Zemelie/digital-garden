@@ -23,14 +23,21 @@ site.config.js           site title, philosophy blurb, comments (giscus) setting
 | Field | Meaning |
 |---|---|
 | `title` | Name of the entry |
-| `type` | `node` (new dandelion) or `branch` |
-| `parent` | Branches: the node/branch it grows from (its filename without `.json`) |
-| `status` | `fresh` · `budding` · `bloomed` |
-| `tags` | any of `document link photo drawing video audio` |
-| `planted` / `tended` | dates, `YYYY-MM-DD` |
-| `image`, `link`, `attachments` | optional media |
-| `related` | other entries to thread to |
-| `body` | Markdown notes |
+| `parent` | **Grows from**: the node/branch it grows from. Empty = a new dandelion (node) |
+| `tags` | **Type**: any of `document link photo drawing video audio` (uploads add theirs automatically) |
+| `status` | **Stage**: `fresh` · `budding` · `bloomed` |
+| `planted` / `tended` | stamped automatically by the CMS on save |
+| `files` | uploads, each with a type (photo, drawing, document, audio, video, link) |
+| `body` | **Notes**, in Markdown |
+| `related` | **Threads to**: optional related entries in other dandelions |
+
+The CMS lives behind the fish next to "Chamcham's Place" (it links to `/admin`).
+
+### Look and feel
+
+- Sky colours, cloud colours and cloud settings: top of `assets/js/sky.js`.
+  Preview any time of day with `?sky=morning`, `?sky=afternoon`, `?sky=evening` or `?sky=night` on the URL.
+- Page colours and fonts: the top of `assets/css/garden.css`.
 
 ## Preview locally
 

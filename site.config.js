@@ -1,8 +1,8 @@
 // Site-wide settings. Edit freely.
 export const SITE = {
-  title: 'Chloe-Amelie Garden',
+  title: 'Chamcham’s Place',
 
-  // The "implicit philosophy" from the sketchbook — shown in the index drawer.
+  // The "root system" on the index page.
   philosophy:
     'The most interesting part of these seeds is their connection to each other. ' +
     'I want to nurture depth of thought and relational thinking. How are these related? ' +

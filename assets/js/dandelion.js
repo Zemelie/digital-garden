@@ -1,6 +1,7 @@
-// Draws one dandelion: a node (the seed head) with branches radiating out,
-// sub-branches forking from branch tips, and a pappus tuft on every tip.
-// The shape grows on its own as entries are added — no manual layout.
+// Draws one dandelion: a bright seed head with a dot for every entry that
+// grows from it. Dot colour = stage (mint fresh, lavender budding, white bloomed).
+// Sub-branches sit further out along their parent's direction. The layout is
+// computed from the data, so the head fills out as entries are planted.
 
 const NS = 'http://www.w3.org/2000/svg';
 
@@ -11,8 +12,8 @@ export function svgEl(name, attrs = {}, parent) {
   return node;
 }
 
-// Stable 0–1 pseudo-random number per string, so the garden looks hand-placed
-// but doesn't jump around between visits.
+// Stable 0–1 pseudo-random number per string, so things look hand-placed
+// but don't jump around between visits.
 export function hash(str) {
   let h = 2166136261;
   for (let i = 0; i < str.length; i++) {
@@ -24,153 +25,141 @@ export function hash(str) {
 
 const rad = (deg) => (deg * Math.PI) / 180;
 
+// Pixel seed icons from the Figma file (assets/img/icons).
+const ICON = {
+  fresh: 'assets/img/icons/seed-fresh.svg',
+  budding: 'assets/img/icons/seed-budding.svg',
+  bloomed: 'assets/img/icons/seed-bloomed.svg',
+  head: 'assets/img/icons/seed-head.svg',
+};
+
+function seedIcon(parent, href, x, y, r) {
+  return svgEl('image', {
+    href, x: (x - r).toFixed(1), y: (y - r).toFixed(1), width: (r * 2).toFixed(1), height: (r * 2).toFixed(1),
+    class: 'dot-icon', preserveAspectRatio: 'xMidYMid meet',
+  }, parent);
+}
+
+const spanFor = (leaves) => Math.min(360, 60 + leaves * 55);
+
 /**
- * Radial layout. Each branch gets a slice of the circle proportional to how
- * many tips it carries; leaves sit on the outer ring, forks partway out.
- * Returns Map<id, {x, y, angle, depth, parent}> relative to the head at (0,0).
+ * Radial layout in rings. Each branch gets a slice of the circle proportional
+ * to how many tips it carries; branches sit on ring 1, sub-branches on ring 2,
+ * and so on. Each ring is pushed out until its dots can't touch each other,
+ * and rings are spaced so neighbouring rings can't touch either.
+ *
+ * Returns { pos: Map<id, {x, y, angle, depth, parent}>, extent } relative to
+ * the head at (0,0); extent is the radius of the outermost dot's edge.
  */
-export function layoutDandelion(g, nodeId, R) {
+export function layoutDandelion(g, nodeId, { dot, head, gap = 6 }) {
   const pos = new Map([[nodeId, { x: 0, y: 0, angle: -90, depth: 0, parent: null }]]);
-  const top = g.children.get(nodeId) || [];
-  if (!top.length) return pos;
+  if (!(g.children.get(nodeId) || []).length) return { pos, extent: head };
 
-  const total = g.leafCount(nodeId);
-  // Few branches cluster upward; many fill out the sphere (leaving room for the stem).
-  const span = Math.min(300, 70 + total * 48);
+  const span = spanFor(g.leafCount(nodeId));
+  const start = -90 - span / 2 + (span === 360 ? hash(nodeId) * 40 : 0);
 
+  // 1. Angles: wedge per subtree, by number of tips.
+  const angles = [];
   const place = (id, a0, a1, depth) => {
     const ch = g.children.get(id) || [];
     const tot = ch.reduce((s, c) => s + g.leafCount(c.id), 0);
     let a = a0;
     for (const c of ch) {
       const w = ((a1 - a0) * g.leafCount(c.id)) / tot;
-      const jitter = (hash(c.id) - 0.5) * Math.min(10, w * 0.3);
-      const mid = a + w / 2 + jitter;
-      const d = depth + 1;
-      const r = R * Math.pow(d / (d + g.height(c.id)), 0.7) * (0.93 + hash(c.id + ':r') * 0.1);
-      pos.set(c.id, { x: Math.cos(rad(mid)) * r, y: Math.sin(rad(mid)) * r, angle: mid, depth: d, parent: id });
-      place(c.id, a, a + w, d);
+      const mid = a + w / 2 + (hash(c.id) - 0.5) * Math.min(6, w * 0.2);
+      angles.push({ id: c.id, parent: id, angle: mid, depth: depth + 1 });
+      place(c.id, a, a + w, depth + 1);
       a += w;
     }
   };
-  place(nodeId, -90 - span / 2, -90 + span / 2, 0);
-  return pos;
+  place(nodeId, start, start + span, 0);
+
+  // 2. Ring radii: far enough out that same-ring neighbours clear each other.
+  const need = 2 * dot + gap; // centre-to-centre distance for two dots not to touch
+  const maxDepth = Math.max(...angles.map((a) => a.depth));
+  const ring = [0];
+  for (let d = 1; d <= maxDepth; d++) {
+    const onRing = angles.filter((a) => a.depth === d).map((a) => a.angle).sort((x, y) => x - y);
+    let minSep = Math.PI;
+    for (let i = 0; i < onRing.length; i++) {
+      const next = i + 1 < onRing.length ? onRing[i + 1] : onRing[0] + 360;
+      if (onRing.length > 1) minSep = Math.min(minSep, rad(next - onRing[i]));
+    }
+    // chord = 2r·sin(sep/2) ≥ need
+    const forSpacing = need / (2 * Math.sin(Math.min(minSep, Math.PI) / 2));
+    const fromInside = d === 1 ? head + dot + gap + 4 : ring[d - 1] + need + 4;
+    ring.push(Math.max(fromInside, forSpacing));
+  }
+
+  for (const a of angles) {
+    const r = ring[a.depth];
+    pos.set(a.id, { x: Math.cos(rad(a.angle)) * r, y: Math.sin(rad(a.angle)) * r, angle: a.angle, depth: a.depth, parent: a.parent });
+  }
+  return { pos, extent: ring[maxDepth] + dot };
 }
 
 /**
- * Render a dandelion into an SVG group.
- * opts: R, labels (bool), hrefFor(id), currentId, pathIds (Set), headLabel (string)
+ * Render a dandelion head into an SVG group.
+ * opts:
+ *   dot, head         seed dot radius, head radius
+ *   hrefFor(id)       link for each dot / the head
+ *   mode              'garden' (all dots in colour) or 'viewer' (dots off the
+ *                     current path are dimmed, and the path is drawn dotted)
+ *   currentId         the entry being viewed
  */
 export function renderDandelion(parent, g, nodeId, opts) {
-  const { R, labels = false, hrefFor, currentId, pathIds } = opts;
-  const pos = layoutDandelion(g, nodeId, R);
-  const node = g.byId.get(nodeId);
-  const pappusLen = Math.max(5, R * 0.1);
+  const { dot = 10, head = 16, hrefFor, mode = 'garden', currentId } = opts;
+  const { pos, extent } = layoutDandelion(g, nodeId, { dot, head });
+  const path = new Set(currentId ? g.pathTo(currentId).map((e) => e.id) : []);
+  const wrap = svgEl('g', { class: `dandelion mode-${mode}` }, parent);
 
-  const wrap = svgEl('g', { class: 'dandelion' }, parent);
-  const branchLayer = svgEl('g', { class: 'branches' }, wrap);
-  const labelLayer = svgEl('g', { class: 'labels' }, wrap);
-
-  const link = (id, layer) => {
-    if (!hrefFor) return svgEl('g', {}, layer);
-    const a = svgEl('a', { href: hrefFor(id), class: 'entry-link' }, layer);
-    a.dataset.id = id;
-    return a;
+  const linkTo = (id, layer, cls) => {
+    const entry = g.byId.get(id);
+    const el = hrefFor ? svgEl('a', { href: hrefFor(id) }, layer) : svgEl('g', {}, layer);
+    el.setAttribute('class', `${cls} st-${entry.status}`);
+    el.dataset.id = id;
+    el.dataset.title = entry.title;
+    el.setAttribute('aria-label', `${entry.title} (${entry.status})`);
+    return el;
   };
 
-  for (const [id, p] of pos) {
-    if (!p.parent) continue;
+  if (mode === 'viewer' && path.size > 1) {
+    const lines = svgEl('g', { class: 'path-lines' }, wrap);
+    for (const id of path) {
+      const p = pos.get(id);
+      if (!p?.parent) continue;
+      const from = pos.get(p.parent);
+      svgEl('line', { x1: from.x, y1: from.y, x2: p.x, y2: p.y, class: 'path-line' }, lines);
+    }
+  }
+
+  const seeds = svgEl('g', { class: 'seeds' }, wrap);
+  // Draw outer dots first so inner (parent) dots sit on top.
+  const order = [...pos.entries()].filter(([, p]) => p.parent).sort((a, b) => b[1].depth - a[1].depth);
+  for (const [id, p] of order) {
+    const onPath = path.has(id);
+    const cls = ['seed', mode === 'viewer' && !onPath ? 'is-muted' : '', id === currentId ? 'is-current' : ''].join(' ');
+    const a = linkTo(id, seeds, cls.trim());
     const entry = g.byId.get(id);
-    const from = pos.get(p.parent);
-    const isLeaf = !(g.children.get(id) || []).length;
-    const cls = [
-      'branch-group',
-      `st-${entry.status}`,
-      pathIds?.has(id) ? 'on-path' : '',
-      currentId === id ? 'is-current' : '',
-    ].join(' ');
-
-    const grp = link(id, branchLayer);
-    grp.setAttribute('class', `${grp.getAttribute('class') || ''} ${cls}`.trim());
-    grp.dataset.id = id;
-    grp.dataset.title = entry.title;
-
-    // A gentle, stable bend so lines feel drawn rather than ruled.
-    const mx = (from.x + p.x) / 2;
-    const my = (from.y + p.y) / 2;
-    const len = Math.hypot(p.x - from.x, p.y - from.y);
-    const bend = (hash(id + ':bend') - 0.5) * len * 0.22;
-    const nx = -(p.y - from.y) / (len || 1);
-    const ny = (p.x - from.x) / (len || 1);
-    const d = `M${from.x.toFixed(1)} ${from.y.toFixed(1)} Q${(mx + nx * bend).toFixed(1)} ${(my + ny * bend).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
-
-    svgEl('path', { d, class: 'hit' }, grp);
-    svgEl('path', { d, class: 'branch' }, grp);
-
-    if (isLeaf) {
-      // Pappus: the little seed parachute at each tip.
-      const tuft = [-36, -18, 0, 18, 36]
-        .map((off) => {
-          const a = rad(p.angle + off);
-          const l = pappusLen * (off === 0 ? 1 : 0.82);
-          return `M${p.x.toFixed(1)} ${p.y.toFixed(1)} l${(Math.cos(a) * l).toFixed(1)} ${(Math.sin(a) * l).toFixed(1)}`;
-        })
-        .join(' ');
-      svgEl('path', { d: tuft, class: 'pappus' }, grp);
+    svgEl('circle', { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: dot + 3, class: 'hit' }, a);
+    svgEl('circle', { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: dot + 2.5, class: 'hover-ring' }, a);
+    if (mode === 'viewer' && !onPath) {
+      // Off-path seeds in the viewer are plain shadow dots.
+      svgEl('circle', { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: dot, class: 'dot' }, a);
     } else {
-      svgEl('circle', { cx: p.x, cy: p.y, r: Math.max(1.8, R * 0.018), class: 'joint' }, grp);
-    }
-
-    if (labels) {
-      const a = rad(p.angle);
-      const off = isLeaf ? pappusLen + 8 : 10;
-      const tx = p.x + Math.cos(a) * off;
-      const ty = p.y + Math.sin(a) * off;
-      const anchor = Math.cos(a) > 0.25 ? 'start' : Math.cos(a) < -0.25 ? 'end' : 'middle';
-      const dy = Math.sin(a) > 0.5 ? '0.9em' : Math.sin(a) < -0.5 ? '-0.2em' : '0.35em';
-      const lg = link(id, labelLayer);
-      lg.setAttribute('class', `${lg.getAttribute('class') || ''} label-group st-${entry.status}`.trim());
-      lg.dataset.id = id;
-      const t = svgEl('text', { x: tx.toFixed(1), y: ty.toFixed(1), 'text-anchor': anchor, dy, class: `tip-label ${isLeaf ? '' : 'fork-label'}` }, lg);
-      t.textContent = entry.title;
+      seedIcon(a, ICON[entry.status], p.x, p.y, dot);
     }
   }
 
-  // Seed head
-  const head = link(nodeId, wrap);
-  head.setAttribute('class', `${head.getAttribute('class') || ''} head-group st-${node.status} ${currentId === nodeId ? 'is-current' : ''}`.trim());
-  head.dataset.id = nodeId;
-  head.dataset.title = node.title;
-  const hr = Math.max(3.5, R * 0.065);
-  const fluff = [];
-  for (let i = 0; i < 16; i++) {
-    const a = rad(i * 22.5 + hash(nodeId) * 20);
-    fluff.push(`M${(Math.cos(a) * hr).toFixed(1)} ${(Math.sin(a) * hr).toFixed(1)} l${(Math.cos(a) * hr * 0.55).toFixed(1)} ${(Math.sin(a) * hr * 0.55).toFixed(1)}`);
-  }
-  svgEl('circle', { r: hr * 2.2, class: 'hit-head' }, head);
-  svgEl('path', { d: fluff.join(' '), class: 'head-fluff' }, head);
-  svgEl('circle', { r: hr, class: 'head' }, head);
+  const h = linkTo(nodeId, wrap, `seed-head ${nodeId === currentId ? 'is-current' : ''}`.trim());
+  svgEl('circle', { r: head + 4, class: 'hit' }, h);
+  svgEl('circle', { r: head + 2.5, class: 'hover-ring' }, h);
+  seedIcon(h, ICON.head, 0, 0, head);
 
-  if (labels && opts.headLabel) {
-    // Sits beside the stem, just under the head — the one gap branches never use.
-    const t = svgEl('text', { x: 12, y: Math.max(hr * 3, R * 0.42), class: 'head-label' }, head);
-    t.textContent = opts.headLabel;
-  }
-
-  return { pos, el: wrap };
+  return { pos, extent, el: wrap };
 }
 
-// A stem from the ground up to the head, with a leaf near the base.
-export function renderStem(parent, length, seed) {
-  const g = svgEl('g', { class: 'stem-group' }, parent);
-  const sway = (hash(seed + ':stem') - 0.5) * length * 0.12;
-  svgEl('path', { d: `M0 ${length} C${sway} ${length * 0.66} ${-sway} ${length * 0.33} 0 0`, class: 'stem' }, g);
-  const side = hash(seed + ':leaf') > 0.5 ? 1 : -1;
-  const ly = length * (0.78 + hash(seed + ':ly') * 0.12);
-  const lw = Math.min(26, length * 0.13);
-  svgEl('path', {
-    d: `M0 ${ly} q${side * lw * 0.5} ${-lw * 0.4} ${side * lw} ${-lw * 1.3} q${-side * lw * 0.15} ${lw * 0.95} ${-side * lw} ${lw * 1.3}`,
-    class: 'leaf',
-  }, g);
-  return g;
+// A straight pixel stem from the head down to the ground.
+export function renderStem(parent, length, width = 3) {
+  return svgEl('rect', { x: -width / 2, y: 0, width, height: length, class: 'stem' }, parent);
 }

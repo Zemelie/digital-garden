@@ -1,6 +1,5 @@
 {
   "title": "FontForge guide",
-  "type": "branch",
   "status": "budding",
   "tags": [
     "document",
@@ -10,5 +9,11 @@
   "tended": "2026-11-12",
   "body": "Notes on working through FontForge.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._",
   "parent": "typography",
-  "link": "https://fontforge.org/docs/"
+  "files": [
+    {
+      "type": "link",
+      "url": "https://fontforge.org/docs/",
+      "label": ""
+    }
+  ]
 }

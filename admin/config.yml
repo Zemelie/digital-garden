@@ -1,5 +1,5 @@
-# Decap CMS settings — the "plant a seed" form at /admin.
-# Every save commits a JSON file to content/entries/ in your GitHub repo;
+# Decap CMS settings — the form behind the fish.
+# Every save commits a JSON file to content/entries/ in GitHub;
 # Netlify then rebuilds the site and the dandelions regrow.
 
 backend:
@@ -7,14 +7,11 @@ backend:
   repo: Zemelie/digital-garden
   branch: main
   commit_messages:
-    create: "Plant {{collection}} “{{slug}}”"
-    update: "Tend {{collection}} “{{slug}}”"
-    delete: "Compost {{collection}} “{{slug}}”"
+    create: "Plant “{{slug}}”"
+    update: "Tend “{{slug}}”"
+    delete: "Compost “{{slug}}”"
     uploadMedia: "Upload “{{path}}”"
     deleteMedia: "Delete “{{path}}”"
-
-# Uncomment to edit locally without GitHub (needs Node: run `npx decap-server`).
-# local_backend: true
 
 site_url: /
 display_url: /
@@ -27,7 +24,7 @@ collections:
   - name: entries
     label: Garden
     label_singular: Entry
-    description: "Nodes are ideas (each becomes a dandelion). Branches are connected thoughts, assets, files and links that grow from a node or from another branch."
+    description: "Leave “Grows from” empty to plant a new dandelion (a node). Pick a node or branch to grow a branch from it."
     folder: content/entries
     format: json
     extension: json
@@ -35,29 +32,18 @@ collections:
     delete: true
     slug: "{{slug}}"
     identifier_field: title
-    summary: "{{title}} · {{type}} · {{status}}"
-    sortable_fields: [title, planted, tended, type, status]
+    summary: "{{title}} · {{status}}"
+    sortable_fields: [title, planted, tended, status]
     view_filters:
-      - { label: Nodes, field: type, pattern: node }
-      - { label: Branches, field: type, pattern: branch }
       - { label: Fresh, field: status, pattern: fresh }
       - { label: Budding, field: status, pattern: budding }
       - { label: Bloomed, field: status, pattern: bloomed }
     view_groups:
-      - { label: Type, field: type }
       - { label: Stage, field: status }
     fields:
       - { label: Title, name: title, widget: string }
 
-      - label: Type
-        name: type
-        widget: select
-        default: branch
-        options:
-          - { label: "Node — a new idea (a new dandelion)", value: node }
-          - { label: "Branch — grows from a node or branch", value: branch }
-
-      - label: Connected to
+      - label: Grows from
         name: parent
         widget: relation
         collection: entries
@@ -65,55 +51,83 @@ collections:
         search_fields: [title]
         display_fields: [title]
         required: false
-        hint: "Branches only: the node or branch this grows from. Leave empty for nodes."
+        hint: "Empty = a new dandelion. Otherwise, the node or branch this grows from."
 
-      - label: Stage (epistemic status)
-        name: status
-        widget: select
-        default: fresh
-        options:
-          - { label: "Fresh — just planted", value: fresh }
-          - { label: "Budding — taking shape", value: budding }
-          - { label: "Bloomed — fully grown", value: bloomed }
-
-      - label: Tags
+      - label: Type
         name: tags
         widget: select
         multiple: true
         required: false
         options: [document, link, photo, drawing, video, audio]
+        hint: "Anything you upload below is added automatically."
 
-      - label: Date planted
-        name: planted
-        widget: datetime
-        format: YYYY-MM-DD
-        date_format: YYYY-MM-DD
-        time_format: false
-        default: "{{now}}"
+      - label: Stage
+        name: status
+        widget: select
+        default: fresh
+        options:
+          - { label: "Fresh — freshly planted", value: fresh }
+          - { label: "Budding — a budding idea", value: budding }
+          - { label: "Blooming — fully bloomed", value: bloomed }
 
-      - label: Last tended
-        name: tended
-        widget: datetime
-        format: YYYY-MM-DD
-        date_format: YYYY-MM-DD
-        time_format: false
-        default: "{{now}}"
-        hint: "Bump this whenever you come back and tend the entry."
-
-      - { label: Image, name: image, widget: image, required: false, choose_url: true }
-      - { label: Link, name: link, widget: string, required: false, hint: "A URL this entry points to (article, video, tweet, website)." }
+      # Set automatically when you save (see admin/index.html).
+      - { label: Date planted, name: planted, widget: hidden }
+      - { label: Last tended, name: tended, widget: hidden }
 
       - label: Files
-        name: attachments
+        name: files
         widget: list
         required: false
-        summary: "{{fields.label}}"
-        hint: "Documents, .otf files, audio or video. Audio and video play inline."
-        fields:
-          - { label: Label, name: label, widget: string }
-          - { label: File, name: file, widget: file }
+        label_singular: file
+        hint: "Pick what kind of thing you're adding, then upload it."
+        types:
+          - label: Photo
+            name: photo
+            widget: object
+            summary: "📷 {{fields.label}}"
+            fields:
+              - { label: Photo, name: file, widget: image }
+              - { label: Caption, name: label, widget: string, required: false }
+          - label: Drawing
+            name: drawing
+            widget: object
+            summary: "✏️ {{fields.label}}"
+            fields:
+              - { label: Drawing, name: file, widget: image }
+              - { label: Caption, name: label, widget: string, required: false }
+          - label: Document
+            name: document
+            widget: object
+            summary: "📄 {{fields.label}}"
+            fields:
+              - { label: File, name: file, widget: file, hint: "PDF, .otf, notes, anything." }
+              - { label: Name, name: label, widget: string, required: false }
+          - label: Audio
+            name: audio
+            widget: object
+            summary: "🎧 {{fields.label}}"
+            fields:
+              - { label: Audio file, name: file, widget: file, hint: "mp3, m4a or wav — plays on the page." }
+              - { label: Name, name: label, widget: string, required: false }
+          - label: Video
+            name: video
+            widget: object
+            summary: "🎞 {{fields.label}}"
+            fields:
+              - { label: Video file, name: file, widget: file, required: false, hint: "Upload an mp4…" }
+              - { label: Or a link, name: url, widget: string, required: false, hint: "…or paste a YouTube / Vimeo link." }
+              - { label: Name, name: label, widget: string, required: false }
+          - label: Link
+            name: link
+            widget: object
+            summary: "🔗 {{fields.label}}"
+            fields:
+              - { label: URL, name: url, widget: string }
+              - { label: Name, name: label, widget: string, required: false }
 
-      - label: Threads to (related entries)
+      - { label: Notes, name: body, widget: markdown, required: false }
+
+      - label: Threads to
         name: related
         widget: relation
         collection: entries
@@ -122,6 +136,4 @@ collections:
         display_fields: [title]
         multiple: true
         required: false
-        hint: "Connect this to entries in other clusters — drawn as threads across the garden."
-
-      - { label: Notes, name: body, widget: markdown, required: false }
+        hint: "Optional: related entries in other dandelions."

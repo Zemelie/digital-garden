@@ -1,17 +1,15 @@
 {
-  "generated": "2026-11-15T03:02:15+00:00",
+  "generated": "2026-11-16T01:53:28+00:00",
   "entries": [
     {
       "id": "exploring-the-city",
-      "title": "Exploring the city",
+      "title": "Toronto",
       "type": "node",
       "parent": null,
       "status": "fresh",
       "tags": [],
       "planted": "2026-11-06",
       "tended": "2026-11-06",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -28,9 +26,14 @@
       ],
       "planted": "2026-11-02",
       "tended": "2026-11-12",
-      "image": null,
-      "link": "https://fontforge.org/docs/",
-      "attachments": [],
+      "attachments": [
+        {
+          "kind": "link",
+          "label": "",
+          "file": null,
+          "url": "https://fontforge.org/docs/"
+        }
+      ],
       "related": [],
       "body": "Notes on working through FontForge.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
     },
@@ -41,16 +44,37 @@
       "parent": "typography",
       "status": "fresh",
       "tags": [
-        "drawing",
-        "photo"
+        "photo",
+        "drawing"
       ],
       "planted": "2026-11-03",
       "tended": "2026-11-03",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "Scans of handwriting to turn into a typeface.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+    },
+    {
+      "id": "hi-jaryd",
+      "title": "Hi Jaryd",
+      "type": "branch",
+      "parent": "mindfulness",
+      "status": "fresh",
+      "tags": [
+        "document",
+        "photo"
+      ],
+      "planted": "2026-11-14",
+      "tended": "2026-11-14",
+      "attachments": [
+        {
+          "kind": "photo",
+          "label": "",
+          "file": "/assets/uploads/img_7888.jpg",
+          "url": null
+        }
+      ],
+      "related": [],
+      "body": "Wow! I can't believe how quickly this can come together. Time to make it pretty... \\\n\\\n(p.s. I love you, goodnight!)"
     },
     {
       "id": "journaling",
@@ -64,8 +88,6 @@
       ],
       "planted": "2026-11-09",
       "tended": "2026-11-09",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [
         "subway-journal-entry"
@@ -81,8 +103,6 @@
       "tags": [],
       "planted": "2026-11-08",
       "tended": "2026-11-08",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -98,8 +118,6 @@
       ],
       "planted": "2026-11-08",
       "tended": "2026-11-08",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -115,8 +133,6 @@
       ],
       "planted": "2026-11-05",
       "tended": "2026-11-05",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "Exported font files live here as attachments.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -133,8 +149,6 @@
       ],
       "planted": "2026-11-06",
       "tended": "2026-11-06",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -148,8 +162,6 @@
       "tags": [],
       "planted": "2026-11-11",
       "tended": "2026-11-11",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "A maybe: a reading list other people can add to.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -165,8 +177,6 @@
       ],
       "planted": "2026-11-07",
       "tended": "2026-11-14",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -182,8 +192,6 @@
       ],
       "planted": "2026-11-02",
       "tended": "2026-11-10",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -197,8 +205,6 @@
       "tags": [],
       "planted": "2026-11-03",
       "tended": "2026-11-03",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -214,8 +220,6 @@
       ],
       "planted": "2026-11-05",
       "tended": "2026-11-05",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -231,8 +235,6 @@
       ],
       "planted": "2026-11-03",
       "tended": "2026-11-03",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -248,8 +250,6 @@
       ],
       "planted": "2026-11-04",
       "tended": "2026-11-04",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
@@ -266,8 +266,6 @@
       ],
       "planted": "2026-11-09",
       "tended": "2026-11-09",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [
         "typography",
@@ -286,8 +284,6 @@
       ],
       "planted": "2026-11-04",
       "tended": "2026-11-04",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [
         "shared-reading-list"
@@ -303,8 +299,6 @@
       "tags": [],
       "planted": "2026-11-01",
       "tended": "2026-11-12",
-      "image": null,
-      "link": null,
       "attachments": [],
       "related": [],
       "body": "Idea / topic: **type**. Books, guides, files and samples gathered while learning to draw letters.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"

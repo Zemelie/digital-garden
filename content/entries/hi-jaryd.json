@@ -8,6 +8,11 @@
   "tags": [
     "document"
   ],
-  "type": "branch",
-  "image": "/assets/uploads/img_7888.jpg"
+  "files": [
+    {
+      "type": "photo",
+      "file": "/assets/uploads/img_7888.jpg",
+      "label": ""
+    }
+  ]
 }

@@ -98,25 +98,61 @@ export function buildGarden(entries) {
     return out;
   }
 
-  const lastTended = entries.reduce(
-    (best, e) => (!best || (e.tended || '') > (best.tended || '') ? e : best),
-    null
-  );
+  const lastTended = entries.reduce((best, e) => {
+    const t = parseDate(e.tended)?.getTime() ?? 0;
+    return !best || t > (parseDate(best.tended)?.getTime() ?? 0) ? e : best;
+  }, null);
 
   return { entries, byId, children, nodes, loose, related, rootOf, leafCount, height, pathTo, walk, lastTended };
 }
 
+// filters.tag may be one tag or a list (any of them matches).
 export function matchesFilters(entry, filters) {
   if (filters.status && entry.status !== filters.status) return false;
-  if (filters.tag && !(entry.tags || []).includes(filters.tag)) return false;
+  const tags = [].concat(filters.tag || []).filter(Boolean);
+  if (tags.length && !tags.some((t) => (entry.tags || []).includes(t))) return false;
   return true;
 }
 
-export function formatDate(iso, opts = { month: 'short', day: 'numeric', year: 'numeric' }) {
-  if (!iso) return '—';
-  const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString(undefined, opts);
+export const STATUS_LABELS = { fresh: 'freshly planted', budding: 'budding idea', bloomed: 'fully bloomed' };
+
+// Dates arrive as 'YYYY-MM-DD' (older entries) or full ISO timestamps (CMS saves).
+export function parseDate(iso) {
+  if (!iso) return null;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d, 12);
+  }
+  const d = new Date(iso);
+  return isNaN(d) ? null : d;
 }
+
+// DD.MM.YYYY, as in the mockups.
+export function formatDate(iso) {
+  const d = parseDate(iso);
+  if (!d) return '—';
+  const p = (n) => String(n).padStart(2, '0');
+  return `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()}`;
+}
+
+export function timeAgo(iso, now = new Date()) {
+  const d = parseDate(iso);
+  if (!d) return '';
+  const dateOnly = /^\d{4}-\d{2}-\d{2}$/.test(iso);
+  const mins = Math.max(0, (now - d) / 60000);
+  const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'} ago`;
+  if (!dateOnly && mins < 60) return mins < 2 ? 'just now' : plural(Math.round(mins), 'minute');
+  if (!dateOnly && mins < 60 * 24) return plural(Math.round(mins / 60), 'hour');
+  const days = dateOnly
+    ? Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12) - d) / 86400000)
+    : Math.round(mins / 1440);
+  if (days <= 0) return 'today';
+  if (days < 14) return plural(days, 'day');
+  if (days < 60) return plural(Math.round(days / 7), 'week');
+  return plural(Math.round(days / 30), 'month');
+}
+
+export const byTitle = (a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' });
 
 export function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

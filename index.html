@@ -3,80 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chloe-Amelie Garden</title>
+  <title>Chamcham’s Place</title>
   <meta name="description" content="A digital garden of seeds, branches and the threads between them.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..900;1,300..900&family=Chivo+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/hydrophilia-iced.otf" as="font" type="font/otf" crossorigin>
   <link rel="stylesheet" href="assets/css/garden.css">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 </head>
 <body class="page-home">
-  <header class="site-header">
-    <a class="wordmark" href="./">Chloe-Amelie Garden</a>
-    <nav class="site-nav">
-      <button type="button" class="link-btn" data-open-index>Index</button>
-      <a href="admin/">Plant a seed</a>
-    </nav>
-  </header>
+  <div class="shell">
+    <section class="frame home-frame">
+      <header class="topbar">
+        <a class="fish" href="admin/" aria-label="Tend the garden" data-icon="fish"></a>
+        <a class="place-name" href="./">Chamcham’s Place</a>
+        <p class="tended" id="lastTended"></p>
+      </header>
 
-  <main class="home-layout">
-    <section class="garden-frame" id="frame" aria-label="The garden">
-      <div class="sky-mark" id="skyMark" aria-hidden="true"></div>
-      <p class="last-tended" id="lastTended"></p>
+      <div class="stage" id="stage">
+        <div class="stage-scroll">
+          <div class="stage-canvas">
+            <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+            <svg id="garden" role="img" aria-labelledby="gardenDesc" preserveAspectRatio="xMidYMax meet">
+              <desc id="gardenDesc">Dandelions, one per idea. Each dot around a seed head is an entry that grows from it.</desc>
+            </svg>
+          </div>
+        </div>
 
-      <div class="garden-title" id="gardenTitle">
-        <h1>The Garden</h1>
-        <form class="filters" id="filters" aria-label="Filter the garden">
-          <label><span>Topic / node</span><select name="topic"></select></label>
-          <label><span>Epistemic</span><select name="status"></select></label>
-          <label><span>File / tag</span><select name="tag"></select></label>
-          <button type="submit" class="go">Go</button>
-        </form>
-        <p class="filter-note" id="filterNote" aria-live="polite"></p>
+        <div class="garden-title">
+          <h1>The Garden</h1>
+          <form class="filters" id="filters" aria-label="Filter the garden">
+            <label class="f-node"><span>Node</span><select name="node"></select></label>
+            <label class="f-status"><span>Status</span><select name="status"></select></label>
+            <label class="f-type"><span>Type</span><select name="tag"></select></label>
+            <button type="submit" class="go">Go!</button>
+          </form>
+          <p class="filter-note" id="filterNote" aria-live="polite"></p>
+        </div>
+
+        <div class="tooltip" id="tooltip" hidden></div>
       </div>
-
-      <nav class="zoom-bar" id="zoomBar" hidden aria-label="Cluster navigation">
-        <a href="#/" class="back">← the garden</a>
-        <span class="cluster-nav">
-          <a id="prevCluster" href="#/" aria-label="Previous cluster">«</a>
-          <span id="zoomTitle"></span>
-          <a id="nextCluster" href="#/" aria-label="Next cluster">»</a>
-        </span>
-      </nav>
-
-      <div class="scroller" id="scroller">
-        <svg id="garden" role="img" aria-labelledby="gardenDesc" preserveAspectRatio="xMidYMax meet">
-          <desc id="gardenDesc">Dandelions, one per idea. Each branch is a connected thought, file or link.</desc>
-        </svg>
-      </div>
-
-      <div class="threads-note" id="threadsNote" hidden></div>
-      <div class="tooltip" id="tooltip" hidden></div>
-      <button type="button" class="index-toggle" data-open-index aria-controls="index" aria-expanded="false">Index <span aria-hidden="true">⌄</span></button>
     </section>
 
-    <aside class="legend" aria-label="Legend">
-      <h2>Colour of branch</h2>
-      <ul class="legend-status">
-        <li><svg viewBox="0 0 48 10" aria-hidden="true"><path class="branch st-bloomed" d="M2 5 H46"/></svg> bloomed</li>
-        <li><svg viewBox="0 0 48 10" aria-hidden="true"><path class="branch st-budding" d="M2 5 H46"/></svg> budding</li>
-        <li><svg viewBox="0 0 48 10" aria-hidden="true"><path class="branch st-fresh" d="M2 5 H46"/></svg> fresh</li>
-      </ul>
-      <h2>Tags</h2>
-      <ul class="legend-tags" id="legendTags"></ul>
-      <h2>Threads</h2>
-      <p class="legend-thread"><svg viewBox="0 0 48 14" aria-hidden="true"><path class="thread" d="M2 3 Q24 16 46 3"/></svg> related across clusters</p>
-    </aside>
-
-    <section class="index-drawer" id="index" hidden aria-label="Index">
-      <div class="index-intro">
-        <h2>Index</h2>
-        <p class="philosophy" id="philosophy"></p>
-      </div>
-      <div class="index-list" id="indexList"></div>
-    </section>
-  </main>
+    <footer class="clockbar">
+      <p class="clock" data-clock></p>
+      <a class="index-link" href="garden-index.html">Index</a>
+    </footer>
+  </div>
 
   <script type="module" src="assets/js/home.js"></script>
 </body>

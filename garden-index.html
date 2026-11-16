@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index · Chamcham’s Place</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..900;1,300..900&family=Chivo+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/hydrophilia-iced.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="assets/css/garden.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="page-index">
+  <div class="shell">
+    <div class="index-top">
+      <p class="clock" data-clock></p>
+      <a class="garden-link" href="./">Garden <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 24V3M4 12l9-9 9 9"/><path d="M13 24v-2" stroke-dasharray="1 3"/></svg></a>
+    </div>
+
+    <section class="frame index-frame">
+      <div class="index-main">
+        <div class="index-head">
+          <h1>INDEX</h1>
+          <form class="filters" id="filters" aria-label="Filter the index">
+            <label class="f-node"><span>Node</span><select name="node"></select></label>
+            <label class="f-status"><span>Status</span><select name="status"></select></label>
+            <label class="f-type"><span>Type</span><select name="tag"></select></label>
+            <button type="submit" class="go">GO!</button>
+          </form>
+        </div>
+        <div class="index-list pill-scroll" id="indexList" tabindex="0" aria-label="All entries"></div>
+      </div>
+
+      <aside class="index-side">
+        <h2>Root system</h2>
+        <div id="philosophy"></div>
+
+        <section class="clues" aria-labelledby="cluesTitle">
+          <h2 id="cluesTitle">Clues and codes</h2>
+          <div class="clues-body">
+            <h3>Epistemic Status</h3>
+            <ul id="statusKey"></ul>
+            <h3>Tags</h3>
+            <ul id="tagKey"></ul>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </div>
+
+  <script type="module" src="assets/js/garden-index.js"></script>
+</body>
+</html>

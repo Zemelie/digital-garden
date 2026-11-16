@@ -7,3 +7,8 @@
   for = "/data/*"
   [headers.values]
     Cache-Control = "no-cache"
+
+# Uploaded images are resized on the fly by Netlify Image CDN (see assets/js/entry.js).
+# Only our own uploads are allowed through it.
+[images]
+  remote_images = []

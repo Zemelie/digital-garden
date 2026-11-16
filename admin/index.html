@@ -7,8 +7,19 @@
   <title>Tend the garden</title>
 </head>
 <body>
-  <!-- Decap CMS: an editor for the garden that works from any browser, including your phone.
-       Settings live in admin/config.yml. -->
+  <!-- Decap CMS: the editor behind the fish. Settings live in admin/config.yml. -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Date planted is stamped once; last tended is stamped on every save.
+    CMS.registerEventListener({
+      name: 'preSave',
+      handler: ({ entry }) => {
+        const now = new Date().toISOString();
+        let data = entry.get('data');
+        if (!data.get('planted')) data = data.set('planted', now);
+        return data.set('tended', now);
+      },
+    });
+  </script>
 </body>
 </html>
