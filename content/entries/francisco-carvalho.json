@@ -1,0 +1,23 @@
+{
+  "title": "Francisco Carvalho",
+  "status": "fresh",
+  "tags": [
+    "link",
+    "photo"
+  ],
+  "planted": "2026-11-17T22:04:50.061Z",
+  "tended": "2026-11-17T22:04:50.061Z",
+  "files": [
+    {
+      "type": "link",
+      "url": "https://francisco.garden/",
+      "label": "francisco.garden"
+    },
+    {
+      "type": "photo",
+      "file": "/assets/uploads/francisco-carvalho-screenshot.jpg",
+      "label": "Screenshot"
+    }
+  ],
+  "body": "Digital garden inspo!! from Ananya!!!"
+}
