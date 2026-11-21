@@ -1,12 +1,13 @@
 {
   "title": "Francisco Carvalho",
-  "status": "fresh",
+  "parent": "digital-gardens",
   "tags": [
     "link",
     "photo"
   ],
+  "status": "fresh",
   "planted": "2026-11-17T22:04:50.061Z",
-  "tended": "2026-11-17T22:04:50.061Z",
+  "tended": "2026-11-21T19:52:17.556Z",
   "files": [
     {
       "type": "link",
