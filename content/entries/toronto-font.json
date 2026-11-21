@@ -1,16 +1,21 @@
 {
-  "title": "Toronto font (?)",
-  "status": "fresh",
-  "tags": [
-    "photo",
-    "drawing"
-  ],
-  "planted": "2026-11-09",
-  "tended": "2026-11-09",
-  "body": "Where the city and typography meet.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._",
+  "title": "Toronto font",
   "parent": "exploring-the-city",
+  "tags": [
+    "link"
+  ],
+  "status": "fresh",
+  "planted": "2026-11-09",
+  "tended": "2026-11-21T20:11:25.349Z",
+  "files": [
+    {
+      "type": "link",
+      "url": "https://github.com/mwichary/The-rectangle-behind-you/blob/master/good-perfect-talk/fonts/toronto-subway.otf",
+      "label": "subway font"
+    }
+  ],
+  "body": "Fount the Toronto subway font files!",
   "related": [
-    "typography",
-    "handwriting-sample"
+    "typography"
   ]
 }
