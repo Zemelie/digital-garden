@@ -1,19 +1,19 @@
 {
   "title": "FontForge guide",
-  "status": "budding",
+  "parent": "typography",
   "tags": [
     "document",
     "link"
   ],
+  "status": "budding",
   "planted": "2026-11-02",
-  "tended": "2026-11-12",
-  "body": "Notes on working through FontForge.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._",
-  "parent": "typography",
+  "tended": "2026-11-21T20:05:09.734Z",
   "files": [
     {
       "type": "link",
-      "url": "https://fontforge.org/docs/",
+      "url": "http://designwithfontforge.com/en-US/index.html",
       "label": ""
     }
-  ]
+  ],
+  "body": "Notes on working through FontForge. This taught me so much about starting principles for making a font!"
 }
