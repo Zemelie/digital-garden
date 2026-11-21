@@ -1,18 +1,18 @@
 {
-  "body": "Wow! I can't believe how quickly this can come together. Time to make it pretty... \\\n\\\n(p.s. I love you, goodnight!)",
-  "tended": "2026-11-14",
-  "planted": "2026-11-14",
-  "parent": "mindfulness",
-  "status": "fresh",
-  "title": "Hi Jaryd",
+  "title": "Garden initial sketch",
+  "parent": "digital-gardens",
   "tags": [
     "document"
   ],
+  "status": "bloomed",
+  "planted": "2026-11-14",
+  "tended": "2026-11-21T20:06:42.507Z",
   "files": [
     {
       "type": "photo",
       "file": "/assets/uploads/img_7888.jpg",
-      "label": ""
+      "label": "Drawn during IRID, class 2. One of two pages!"
     }
-  ]
+  ],
+  "body": "Wow! I can't believe how quickly this can come together. Time to make it pretty..."
 }
