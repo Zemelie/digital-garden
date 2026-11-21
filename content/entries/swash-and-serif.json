@@ -1,11 +1,18 @@
 {
   "title": "Swash & serif",
-  "status": "bloomed",
+  "parent": "typography",
   "tags": [
     "link"
   ],
+  "status": "fresh",
   "planted": "2026-11-02",
-  "tended": "2026-11-10",
-  "body": "_Planted from the sketchbook. Tend me: add notes, files, links._",
-  "parent": "typography"
+  "tended": "2026-11-21T20:12:29.379Z",
+  "files": [
+    {
+      "type": "link",
+      "url": "https://swashandserif.ca/",
+      "label": "Swash & Serif"
+    }
+  ],
+  "body": "First type conference ever attended. Much to add!"
 }
