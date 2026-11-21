@@ -1,6 +1,19 @@
 {
-  "generated": "2026-11-16T01:53:28+00:00",
+  "generated": "2026-11-21T20:19:08+00:00",
   "entries": [
+    {
+      "id": "digital-gardens",
+      "title": "digital gardens",
+      "type": "node",
+      "parent": null,
+      "status": "budding",
+      "tags": [],
+      "planted": "2026-11-21T19:51:30Z",
+      "tended": "2026-11-21T19:51:30Z",
+      "attachments": [],
+      "related": [],
+      "body": "Exploring the ethos of digital gardening"
+    },
     {
       "id": "exploring-the-city",
       "title": "Toronto",
@@ -25,56 +38,98 @@
         "link"
       ],
       "planted": "2026-11-02",
-      "tended": "2026-11-12",
+      "tended": "2026-11-21T20:05:09Z",
       "attachments": [
         {
           "kind": "link",
           "label": "",
           "file": null,
-          "url": "https://fontforge.org/docs/"
+          "url": "http://designwithfontforge.com/en-US/index.html"
         }
       ],
       "related": [],
-      "body": "Notes on working through FontForge.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "body": "Notes on working through FontForge. This taught me so much about starting principles for making a font!"
     },
     {
-      "id": "handwriting-sample",
-      "title": "Handwriting sample",
+      "id": "francisco-carvalho",
+      "title": "Francisco Carvalho",
       "type": "branch",
-      "parent": "typography",
+      "parent": "digital-gardens",
       "status": "fresh",
       "tags": [
-        "photo",
-        "drawing"
+        "link",
+        "photo"
       ],
-      "planted": "2026-11-03",
-      "tended": "2026-11-03",
-      "attachments": [],
+      "planted": "2026-11-17T22:04:50Z",
+      "tended": "2026-11-21T19:52:17Z",
+      "attachments": [
+        {
+          "kind": "link",
+          "label": "francisco.garden",
+          "file": null,
+          "url": "https://francisco.garden/"
+        },
+        {
+          "kind": "photo",
+          "label": "Screenshot",
+          "file": "/assets/uploads/francisco-carvalho-screenshot.jpg",
+          "url": null
+        }
+      ],
       "related": [],
-      "body": "Scans of handwriting to turn into a typeface.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "body": "Digital garden inspo!! from Ananya!!!"
     },
     {
       "id": "hi-jaryd",
-      "title": "Hi Jaryd",
+      "title": "Garden initial sketch",
       "type": "branch",
-      "parent": "mindfulness",
-      "status": "fresh",
+      "parent": "digital-gardens",
+      "status": "bloomed",
       "tags": [
         "document",
         "photo"
       ],
       "planted": "2026-11-14",
-      "tended": "2026-11-14",
+      "tended": "2026-11-21T20:06:42Z",
       "attachments": [
         {
           "kind": "photo",
-          "label": "",
+          "label": "Drawn during IRID, class 2. One of two pages!",
           "file": "/assets/uploads/img_7888.jpg",
           "url": null
         }
       ],
       "related": [],
-      "body": "Wow! I can't believe how quickly this can come together. Time to make it pretty... \\\n\\\n(p.s. I love you, goodnight!)"
+      "body": "Wow! I can't believe how quickly this can come together. Time to make it pretty..."
+    },
+    {
+      "id": "image-to-pixel-art",
+      "title": "Image To Pixel Art",
+      "type": "branch",
+      "parent": "digital-gardens",
+      "status": "fresh",
+      "tags": [
+        "link",
+        "photo"
+      ],
+      "planted": "2026-11-16T02:23:38Z",
+      "tended": "2026-11-21T20:07:50Z",
+      "attachments": [
+        {
+          "kind": "link",
+          "label": "pixelartvillage.com",
+          "file": null,
+          "url": "https://pixelartvillage.com/"
+        },
+        {
+          "kind": "photo",
+          "label": "Screenshot",
+          "file": "/assets/uploads/image-to-pixel-art-screenshot.jpg",
+          "url": null
+        }
+      ],
+      "related": [],
+      "body": "Dabbling with taking some photos of landscapes and turning them into pixel art... inspiration for digital garden styling."
     },
     {
       "id": "journaling",
@@ -108,63 +163,48 @@
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
     },
     {
-      "id": "no-internet-idea",
-      "title": "No-internet idea",
-      "type": "branch",
-      "parent": "mindfulness",
-      "status": "fresh",
-      "tags": [
-        "document"
-      ],
-      "planted": "2026-11-08",
-      "tended": "2026-11-08",
-      "attachments": [],
-      "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "otf-files",
-      "title": ".otf files",
-      "type": "branch",
-      "parent": "fontforge-guide",
-      "status": "fresh",
-      "tags": [
-        "document"
-      ],
-      "planted": "2026-11-05",
-      "tended": "2026-11-05",
-      "attachments": [],
-      "related": [],
-      "body": "Exported font files live here as attachments.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "restaurants",
-      "title": "Restaurants",
+      "id": "missing-plaque-1",
+      "title": "Missing Plaque #1",
       "type": "branch",
       "parent": "exploring-the-city",
       "status": "fresh",
       "tags": [
-        "link",
         "photo"
       ],
-      "planted": "2026-11-06",
-      "tended": "2026-11-06",
-      "attachments": [],
+      "planted": "2026-11-16T20:55:01Z",
+      "tended": "2026-11-16T20:55:01Z",
+      "attachments": [
+        {
+          "kind": "photo",
+          "label": "",
+          "file": "/assets/uploads/missing-plaque-1.jpg",
+          "url": null
+        }
+      ],
       "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "body": "I wonder what used to be here… what did it say ?\n\nReminds me of Matthew Jordan’s tour, he said there was an underground market for historical plaques and letters…"
     },
     {
-      "id": "shared-reading-list",
-      "title": "Shared reading list?",
-      "type": "node",
-      "parent": null,
+      "id": "polish-combatant-society",
+      "title": "Polish Combatant Society",
+      "type": "branch",
+      "parent": "exploring-the-city",
       "status": "fresh",
-      "tags": [],
-      "planted": "2026-11-11",
-      "tended": "2026-11-11",
-      "attachments": [],
+      "tags": [
+        "photo"
+      ],
+      "planted": "2026-11-16T14:50:47Z",
+      "tended": "2026-11-16T14:50:47Z",
+      "attachments": [
+        {
+          "kind": "photo",
+          "label": "",
+          "file": "/assets/uploads/polish-combatant-society.jpg",
+          "url": null
+        }
+      ],
       "related": [],
-      "body": "A maybe: a reading list other people can add to.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "body": "Found this on my walk to work, curious what the history of this org/building is"
     },
     {
       "id": "subway-journal-entry",
@@ -186,92 +226,46 @@
       "title": "Swash & serif",
       "type": "branch",
       "parent": "typography",
-      "status": "bloomed",
+      "status": "fresh",
       "tags": [
         "link"
       ],
       "planted": "2026-11-02",
-      "tended": "2026-11-10",
-      "attachments": [],
-      "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "symposium-2026",
-      "title": "Symposium 2026",
-      "type": "node",
-      "parent": null,
-      "status": "budding",
-      "tags": [],
-      "planted": "2026-11-03",
-      "tended": "2026-11-03",
-      "attachments": [],
-      "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "symposium-tweets",
-      "title": "Tweets",
-      "type": "branch",
-      "parent": "symposium-2026",
-      "status": "fresh",
-      "tags": [
-        "link"
+      "tended": "2026-11-21T20:12:29Z",
+      "attachments": [
+        {
+          "kind": "link",
+          "label": "Swash & Serif",
+          "file": null,
+          "url": "https://swashandserif.ca/"
+        }
       ],
-      "planted": "2026-11-05",
-      "tended": "2026-11-05",
-      "attachments": [],
       "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "symposium-videos",
-      "title": "Videos",
-      "type": "branch",
-      "parent": "symposium-2026",
-      "status": "fresh",
-      "tags": [
-        "video"
-      ],
-      "planted": "2026-11-03",
-      "tended": "2026-11-03",
-      "attachments": [],
-      "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
-    },
-    {
-      "id": "symposium-website",
-      "title": "Website",
-      "type": "branch",
-      "parent": "symposium-2026",
-      "status": "budding",
-      "tags": [
-        "link"
-      ],
-      "planted": "2026-11-04",
-      "tended": "2026-11-04",
-      "attachments": [],
-      "related": [],
-      "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "body": "First type conference ever attended. Much to add!"
     },
     {
       "id": "toronto-font",
-      "title": "Toronto font (?)",
+      "title": "Toronto font",
       "type": "branch",
       "parent": "exploring-the-city",
       "status": "fresh",
       "tags": [
-        "photo",
-        "drawing"
+        "link"
       ],
       "planted": "2026-11-09",
-      "tended": "2026-11-09",
-      "attachments": [],
-      "related": [
-        "typography",
-        "handwriting-sample"
+      "tended": "2026-11-21T20:11:25Z",
+      "attachments": [
+        {
+          "kind": "link",
+          "label": "subway font",
+          "file": null,
+          "url": "https://github.com/mwichary/The-rectangle-behind-you/blob/master/good-perfect-talk/fonts/toronto-subway.otf"
+        }
       ],
-      "body": "Where the city and typography meet.\n\n_Planted from the sketchbook. Tend me: add notes, files, links._"
+      "related": [
+        "typography"
+      ],
+      "body": "Fount the Toronto subway font files!"
     },
     {
       "id": "type-books",
@@ -285,9 +279,7 @@
       "planted": "2026-11-04",
       "tended": "2026-11-04",
       "attachments": [],
-      "related": [
-        "shared-reading-list"
-      ],
+      "related": [],
       "body": "_Planted from the sketchbook. Tend me: add notes, files, links._"
     },
     {
