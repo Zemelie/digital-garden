@@ -1,0 +1,24 @@
+{
+  "title": "Digital Garden Terms of Service",
+  "parent": "digital-gardens",
+  "status": "fresh",
+  "tags": [
+    "link",
+    "photo"
+  ],
+  "planted": "2026-11-21T20:19:56.486Z",
+  "tended": "2026-11-21T20:19:56.486Z",
+  "files": [
+    {
+      "type": "link",
+      "url": "https://swyx.io/digital-garden-tos",
+      "label": "swyx.io"
+    },
+    {
+      "type": "photo",
+      "file": "/assets/uploads/digital-garden-terms-of-service-screenshot.jpg",
+      "label": "Screenshot"
+    }
+  ],
+  "body": "I really enjoy the epistemic statuses on this one."
+}
