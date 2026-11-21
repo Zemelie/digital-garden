@@ -1,13 +1,13 @@
 {
   "title": "Image To Pixel Art",
-  "parent": "hi-jaryd",
-  "status": "fresh",
+  "parent": "digital-gardens",
   "tags": [
     "link",
     "photo"
   ],
+  "status": "fresh",
   "planted": "2026-11-16T02:23:38.974Z",
-  "tended": "2026-11-16T02:23:38.974Z",
+  "tended": "2026-11-21T20:07:50.166Z",
   "files": [
     {
       "type": "link",
@@ -20,5 +20,5 @@
       "label": "Screenshot"
     }
   ],
-  "body": "Dabbling with taking some photos of landscapes and turning them into pixel art..."
+  "body": "Dabbling with taking some photos of landscapes and turning them into pixel art... inspiration for digital garden styling."
 }
